@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd4ebsnqmp7di"]
+
+[ext_resource type="PackedScene" uid="uid://br25ofuosfde3" path="res://sth.tscn" id="1_g7qff"]
+[ext_resource type="Script" path="res://Battle.gd" id="1_ps2h2"]
+[ext_resource type="PackedScene" uid="uid://jlsqi0o6bkke" path="res://handle_node.tscn" id="2_puv38"]
+[ext_resource type="Script" path="res://sth.gd" id="3_c0400"]
+[ext_resource type="PackedScene" uid="uid://bcva3tc1w0f68" path="res://character.tscn" id="3_fbt3v"]
+
+[sub_resource type="GDScript" id="GDScript_omjqf"]
+script/source = "extends HBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if $Battle/Character.CP < 3:
+		pass
+"
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_ps2h2")
+
+[node name="UI" parent="." instance=ExtResource("1_g7qff")]
+script = ExtResource("3_c0400")
+
+[node name="HBoxContainer2" parent="UI/ButtonContainer" index="1"]
+script = SubResource("GDScript_omjqf")
+
+[node name="PanelContainer" parent="UI" index="1"]
+offset_right = 1098.0
+
+[node name="Handle_node" parent="." instance=ExtResource("2_puv38")]
+position = Vector2(705.469, 682.101)
+
+[node name="Player" parent="." instance=ExtResource("3_fbt3v")]
+position = Vector2(71, 509)
+
+[node name="Char_State" parent="Player" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 150.0
+offset_bottom = 120.0
+
+[node name="Name" parent="Player/Char_State" index="0"]
+text = "Player
+"
+
+[node name="Enemy" parent="." instance=ExtResource("3_fbt3v")]
+position = Vector2(71, 50)
+
+[node name="Char_State" parent="Enemy" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 150.0
+offset_bottom = 120.0
+
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/Hit" to="Handle_node" method="_on_hit_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/Charge" to="Handle_node" method="_on_charge_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/Defense" to="Handle_node" method="_on_defense_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer2/S Hit" to="Handle_node" method="_on_s_hit_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer2/Steal" to="Handle_node" method="_on_steal_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer2/S Defense" to="Handle_node" method="_on_s_defense_pressed"]
+
+[editable path="UI"]
+[editable path="Player"]
+[editable path="Enemy"]

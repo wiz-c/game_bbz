@@ -1,0 +1,8 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1696334213
+Enemy.gd::GDScript::-1::1696333387::0::1::::<>Node2D<>::
+export_presets.cfg::TextFile::-1::1696334088::0::1::::<><>::
+Handle_node.gd::GDScript::-1::1696334029::0::1::::<>Node2D<>::
+icon.svg::CompressedTexture2D::2054530789821101861::1696130138::1696130145::1::::<><>::
+node_2d.tscn::PackedScene::2657099789486291942::1696334072::0::1::::<><>::res://Handle_node.gd<>res://Player.gd<>res://Enemy.gd
+Player.gd::GDScript::-1::1696324173::0::1::::<>Node2D<>::

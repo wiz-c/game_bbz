@@ -1,0 +1,327 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd4ebsnqmp7di"]
+
+[ext_resource type="Script" path="res://Handle_node.gd" id="4_41ggg"]
+[ext_resource type="Script" path="res://Player.gd" id="4_i2mst"]
+[ext_resource type="Script" path="res://Enemy.gd" id="5_syqfo"]
+
+[sub_resource type="GDScript" id="GDScript_h21j1"]
+script/source = "extends Node2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+
+
+"
+
+[sub_resource type="GDScript" id="GDScript_a4cmo"]
+script/source = "extends Control
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+	
+
+"
+
+[sub_resource type="GDScript" id="GDScript_omjqf"]
+script/source = "extends HBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+		pass
+"
+
+[sub_resource type="GDScript" id="GDScript_oaul6"]
+script/source = "extends RichTextLabel
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+
+func _on_handle_node_res_out(output):
+	self.add_text(output)
+
+func _on_finish_pressed():
+	pass
+"
+
+[node name="Battle" type="Node2D"]
+script = SubResource("GDScript_h21j1")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_a4cmo")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 292.0
+offset_top = 528.0
+offset_right = 742.0
+offset_bottom = 632.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ButtonContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_direction = 1
+layout_mode = 2
+alignment = 1
+
+[node name="Hit" type="Button" parent="UI/ButtonContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(120, 50)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Hit
+"
+
+[node name="Charge" type="Button" parent="UI/ButtonContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(120, 50)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Charge
+"
+
+[node name="Defense" type="Button" parent="UI/ButtonContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(120, 50)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Defense"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/ButtonContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_direction = 1
+layout_mode = 2
+alignment = 1
+script = SubResource("GDScript_omjqf")
+
+[node name="S_Hit" type="Button" parent="UI/ButtonContainer/HBoxContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(120, 50)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "S Hit
+"
+
+[node name="Steal" type="Button" parent="UI/ButtonContainer/HBoxContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(120, 50)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Steal
+"
+
+[node name="S_Defense" type="Button" parent="UI/ButtonContainer/HBoxContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(120, 50)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "S Defense"
+
+[node name="PanelContainer" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 71.0
+offset_top = 187.0
+offset_right = 1098.0
+offset_bottom = 470.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+text = "Something I should say but I forget.
+__________________________
+"
+scroll_following = true
+autowrap_mode = 2
+tab_size = 5
+shortcut_keys_enabled = false
+script = SubResource("GDScript_oaul6")
+
+[node name="Finish" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 778.0
+offset_top = 528.0
+offset_right = 812.0
+offset_bottom = 559.0
+scale = Vector2(7, 3.2)
+text = "Go!"
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 54.0
+offset_right = 436.0
+offset_bottom = 80.0
+scale = Vector2(2.5521, 3.33578)
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(71, 509)
+script = ExtResource("4_i2mst")
+
+[node name="Char_State" type="VBoxContainer" parent="Player"]
+offset_right = 150.0
+offset_bottom = 120.0
+
+[node name="Name" type="Label" parent="Player/Char_State"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Player
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State" type="VBoxContainer" parent="Player/Char_State"]
+layout_mode = 2
+
+[node name="LP" type="ProgressBar" parent="Player/Char_State/State"]
+editor_description = "5/5
+"
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 5.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Player/Char_State/State/LP"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 26.0
+
+[node name="CP" type="ProgressBar" parent="Player/Char_State/State"]
+editor_description = "5/5
+"
+custom_minimum_size = Vector2(150, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 3.0
+step = 1.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Player/Char_State/State/CP"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+"
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(71, 50)
+script = ExtResource("5_syqfo")
+
+[node name="Char_State" type="VBoxContainer" parent="Enemy"]
+offset_right = 150.0
+offset_bottom = 120.0
+
+[node name="Name" type="Label" parent="Enemy/Char_State"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Enemy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State" type="VBoxContainer" parent="Enemy/Char_State"]
+layout_mode = 2
+
+[node name="LP" type="ProgressBar" parent="Enemy/Char_State/State"]
+editor_description = "5/5
+"
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 5.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Enemy/Char_State/State/LP"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 26.0
+
+[node name="CP" type="ProgressBar" parent="Enemy/Char_State/State"]
+editor_description = "5/5
+"
+custom_minimum_size = Vector2(150, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 3.0
+step = 1.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Enemy/Char_State/State/CP"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+"
+
+[node name="Handle_node" type="Node2D" parent="."]
+position = Vector2(705.469, 682.101)
+script = ExtResource("4_41ggg")
+
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/Hit" to="Player" method="_on_hit_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/Charge" to="Player" method="_on_charge_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/Defense" to="Player" method="_on_defense_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer2/S_Hit" to="Player" method="_on_s_hit_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer2/Steal" to="Player" method="_on_steal_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer2/S_Defense" to="Player" method="_on_s_defense_pressed"]
+[connection signal="pressed" from="UI/Finish" to="UI/PanelContainer/RichTextLabel" method="_on_finish_pressed" flags=18]
+[connection signal="pressed" from="UI/Finish" to="Player" method="_on_finish_pressed"]
+[connection signal="pressed" from="UI/Finish" to="Enemy" method="_on_finish_pressed"]
+[connection signal="aif" from="Player" to="Handle_node" method="_on_player_aif"]
+[connection signal="aif" from="Enemy" to="Handle_node" method="_on_enemy_aif"]
+[connection signal="res_out" from="Handle_node" to="UI/PanelContainer/RichTextLabel" method="_on_handle_node_res_out"]
